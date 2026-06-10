@@ -12,17 +12,18 @@ import { useMedicines } from "../src/context/MedicineContext";
 import MedicineCard from "../src/components/MedicineCard";
 import { ListSkeleton } from "../src/components/LoadingSkeleton";
 import EmptyState from "../src/components/EmptyState";
+import { Colors } from "@/constants/Colors";
 
 const { width } = Dimensions.get("window");
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 const QUICK_ACTIONS = [
-  { icon: "add-circle-outline" as const, label: "Add\nMedicine", route: "/medications/add" as const, gradient: ["#4CAF50", "#2E7D32"] as [string, string] },
-  { icon: "notifications-outline" as const, label: "Reminders", route: "/reminders" as const, gradient: ["#7B1FA2", "#6A1B9A"] as [string, string] },
-  { icon: "bar-chart-outline" as const, label: "Daily\nSummary", route: "/daily-summary" as const, gradient: ["#1565C0", "#0D47A1"] as [string, string] },
-  { icon: "calendar-outline" as const, label: "Calendar\nView", route: "/calendar" as const, gradient: ["#2196F3", "#1976D2"] as [string, string] },
-  { icon: "alert-circle-outline" as const, label: "Missed\nDoses", route: "/missed-doses" as const, gradient: ["#E53935", "#C62828"] as [string, string] },
-  { icon: "medical-outline" as const, label: "Refill\nTracker", route: "/refills" as const, gradient: ["#FF5722", "#E64A19"] as [string, string] },
+  { icon: "add-circle-outline" as const, label: "Add\nMedicine", route: "/medications/add" as const, gradient: [Colors.light.success, "#047857"] as [string, string] },
+  { icon: "notifications-outline" as const, label: "Reminders", route: "/reminders" as const, gradient: [Colors.light.primary, Colors.light.primaryStrong] as [string, string] },
+  { icon: "bar-chart-outline" as const, label: "Daily\nSummary", route: "/daily-summary" as const, gradient: ["#3b82f6", "#1e3a8a"] as [string, string] },
+  { icon: "calendar-outline" as const, label: "Calendar\nView", route: "/calendar" as const, gradient: ["#60a5fa", "#2563eb"] as [string, string] },
+  { icon: "alert-circle-outline" as const, label: "Missed\nDoses", route: "/missed-doses" as const, gradient: [Colors.light.danger, "#991b1b"] as [string, string] },
+  { icon: "medical-outline" as const, label: "Refill\nTracker", route: "/refills" as const, gradient: ["#f97316", "#c2410c"] as [string, string] },
 ];
 
 function CircularProgress({ progress, totalDoses, completedDoses }: { progress: number; totalDoses: number; completedDoses: number }) {
@@ -99,7 +100,7 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <LinearGradient colors={["#1a8e2d", "#146922"]} style={styles.header}>
+      <LinearGradient colors={[Colors.light.primary, Colors.light.primaryStrong]} style={styles.header}>
         <View style={styles.headerContent}>
           <View style={styles.headerTop}>
             <View style={styles.flex1}>
@@ -193,7 +194,7 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f8f9fa" },
+  container: { flex: 1, backgroundColor: Colors.light.bg },
   header: {
     paddingTop: 50, paddingBottom: 25,
     borderBottomLeftRadius: 30, borderBottomRightRadius: 30,
@@ -238,6 +239,6 @@ const styles = StyleSheet.create({
   sectionHeader: {
     flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 12,
   },
-  sectionTitle: { fontSize: 18, fontWeight: "700", color: "#1a1a1a" },
-  seeAllButton: { color: "#1a8e2d", fontWeight: "600", fontSize: 14 },
+  sectionTitle: { fontSize: 18, fontWeight: "700", color: Colors.light.text },
+  seeAllButton: { color: Colors.light.primary, fontWeight: "600", fontSize: 14 },
 });

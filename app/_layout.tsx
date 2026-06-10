@@ -11,7 +11,7 @@ export default function Layout() {
         <Stack
           screenOptions={{
             headerShown: false,
-            contentStyle: { backgroundColor: "#f8f9fa" },
+            contentStyle: { backgroundColor: "#f4f7fb" },
             animation: "slide_from_right",
           }}
         >

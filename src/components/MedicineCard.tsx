@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Medicine } from '../services/medicinesService';
+import { Colors } from '@/constants/Colors';
 
 interface MedicineCardProps {
   medicine: Medicine;
@@ -31,7 +32,7 @@ export default function MedicineCard({
         <Ionicons
           name="medical"
           size={compact ? 20 : 24}
-          color={isLowStock ? '#E53935' : '#1a8e2d'}
+          color={isLowStock ? Colors.light.danger : Colors.light.primary}
         />
       </View>
 
@@ -40,7 +41,7 @@ export default function MedicineCard({
         <Text style={styles.dosage}>{medicine.dosage}</Text>
         <View style={styles.meta}>
           <View style={styles.metaItem}>
-            <Ionicons name="time-outline" size={14} color="#888" />
+            <Ionicons name="time-outline" size={14} color={Colors.light.textMuted} />
             <Text style={styles.metaText}>
               {medicine.schedule?.length || 0}x daily
             </Text>
@@ -50,7 +51,7 @@ export default function MedicineCard({
               <Ionicons
                 name="cube-outline"
                 size={14}
-                color={isLowStock ? '#E53935' : '#888'}
+                color={isLowStock ? Colors.light.danger : Colors.light.textMuted}
               />
               <Text style={[styles.metaText, isLowStock && styles.metaTextWarning]}>
                 {medicine.quantity} left
@@ -70,7 +71,7 @@ export default function MedicineCard({
       )}
 
       {!showTakeButton && onPress && (
-        <Ionicons name="chevron-forward" size={20} color="#ccc" />
+        <Ionicons name="chevron-forward" size={20} color={Colors.light.borderStrong} />
       )}
     </TouchableOpacity>
   );
@@ -80,15 +81,13 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: Colors.light.surfaceStrong,
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 3,
+    borderWidth: 1,
+    borderColor: Colors.light.border,
+    ...Colors.light.shadowMd,
   },
   cardCompact: {
     padding: 12,
@@ -98,13 +97,13 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#E8F5E9',
+    backgroundColor: Colors.light.primarySoft,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 14,
   },
   iconBadgeWarning: {
-    backgroundColor: '#FFEBEE',
+    backgroundColor: 'rgba(220, 38, 38, 0.12)',
   },
   info: {
     flex: 1,
@@ -112,12 +111,12 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#1a1a1a',
+    color: Colors.light.text,
     marginBottom: 2,
   },
   dosage: {
     fontSize: 14,
-    color: '#666',
+    color: Colors.light.textMuted,
     marginBottom: 6,
   },
   meta: {
@@ -131,24 +130,24 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   metaItemWarning: {
-    backgroundColor: '#FFEBEE',
+    backgroundColor: 'rgba(220, 38, 38, 0.12)',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 8,
   },
   metaText: {
     fontSize: 12,
-    color: '#888',
+    color: Colors.light.textMuted,
   },
   metaTextWarning: {
-    color: '#E53935',
+    color: Colors.light.danger,
     fontWeight: '600',
   },
   takeButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#1a8e2d',
+    backgroundColor: Colors.light.primary,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 8,
